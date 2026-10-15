@@ -7,10 +7,10 @@ A multilingual Pune Metro journey companion for riders and people new to Pune. I
 Requires Node.js 20 or newer.
 
 1. Run npm start.
-2. Open http://localhost:3000 in your browser.
+2. Open http://localhost:3001 in your browser.
 3. Search for Pune Metro stations and plan a station-to-station trip without adding any keys.
 
-Google Maps and OpenAI credentials are optional. Add them to a private .env file when you want landmark search, provider route estimates, and AI trip parsing. Copy .env.example to .env, then set GOOGLE_MAPS_API_KEY (Places API and Routes API enabled) and OPENAI_API_KEY. If port 3000 is already in use, set PORT=3001 before starting the app and open http://localhost:3001.
+Google Maps and OpenAI credentials are optional. Add them to a private .env file when you want landmark search, provider route estimates, and AI trip parsing. Copy .env.example to .env, then set GOOGLE_MAPS_API_KEY (Places API and Routes API enabled) and OPENAI_API_KEY. The default local port is 3001; set PORT to choose a different port.
 
 The browser never receives either secret. Restrict the Google key to the APIs this server uses, set provider quotas, and keep .env out of version control.
 
