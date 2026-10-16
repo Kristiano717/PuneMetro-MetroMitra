@@ -2,7 +2,7 @@
 (() => {
   const purple = [
     "PCMC", "Sant Tukaram Nagar", "Bhosari (Nashik Phata)", "Kasarwadi",
-    "Phugewadi", "Dapodi", "Bopodi", "Khadki", "Range Hill", "Shivaji Nagar",
+    "Phugewadi", "Dapodi", "Bopodi", "Khadki", "Range Hill Depot", "Shivaji Nagar",
     "District Court (Civil Court)", "Kasba Peth", "Mahatma Phule Mandai", "Swargate"
   ];
   const aqua = [
@@ -11,6 +11,13 @@
     "District Court (Civil Court)", "R.T.O. Pune", "Pune Railway Station",
     "Ruby Hall Clinic", "Bund Garden", "Yerawada", "Kalyani Nagar", "Ramwadi"
   ];
+  // Station locations use mapped station points (OpenStreetMap/Wikidata), not
+  // neighborhood or landmark coordinates. Route strokes connect stations for
+  // network orientation; they are not surveyed track centerlines.
+  const coordinates = {
+    "PCMC":[18.62939,73.80336], "Sant Tukaram Nagar":[18.61456,73.81564], "Bhosari (Nashik Phata)":[18.60734,73.82231], "Kasarwadi":[18.59962,73.82726], "Phugewadi":[18.59111,73.83115], "Dapodi":[18.58377,73.83384], "Bopodi":[18.56966,73.83810], "Khadki":[18.56230,73.84210], "Range Hill Depot":[18.55029,73.84581], "Shivaji Nagar":[18.53272,73.84954], "District Court (Civil Court)":[18.52691,73.85801], "Kasba Peth":[18.52122,73.85955], "Mahatma Phule Mandai":[18.51300,73.85693], "Swargate":[18.49975,73.85746],
+    "Vanaz":[18.50710,73.80527], "Anand Nagar":[18.50956,73.81404], "Paud Phata":[18.50910,73.82208], "S.N.D.T. College":[18.50731,73.82868], "Garware College":[18.51199,73.83802], "Deccan Gymkhana":[18.51633,73.84449], "Chhatrapati Sambhaji Udyan":[18.52012,73.84760], "PMC":[18.52275,73.85349], "R.T.O. Pune":[18.53001,73.86521], "Pune Railway Station":[18.52937,73.87266], "Ruby Hall Clinic":[18.53270,73.87784], "Bund Garden":[18.54055,73.88343], "Yerawada":[18.54542,73.88672], "Kalyani Nagar":[18.54448,73.90570], "Ramwadi":[18.55723,73.90870]
+  };
   const aliases = {
     "PCMC": ["pimpri", "chinchwad"],
     "Bhosari (Nashik Phata)": ["bhosari", "nashik phata"],
@@ -33,6 +40,7 @@
     return {
       id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
       name,
+      coordinates: coordinates[name],
       lines: servedBy.map(line => line.id),
       aliases: aliases[name] || []
     };
